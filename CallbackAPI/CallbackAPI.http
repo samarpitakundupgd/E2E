@@ -1,0 +1,6 @@
+@CallbackAPI_HostAddress = http://localhost:5112
+
+GET {{CallbackAPI_HostAddress}}/caserequest
+Accept: application/json
+
+###

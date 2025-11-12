@@ -1,0 +1,29 @@
+{
+  "countryCd": "USA",
+  "orgName": "4DPATH",
+  "orgCd": "QAORG",
+  "accountCd": "QAACCOUNT",
+  "batchCd": "DEFAULT",
+  "caseCd": "E2E_CasebyCallBackAPI",
+  "submitterId": "integration_test@4dpath.com",
+  "caseLinkId": "",
+  "callbackURL": "https://62d521e1832c4a020ae2b1deb0b973ec.m.pipedream.net",
+  "callbackHttpMethod": "POST",
+  "images": [
+    {
+      "slideId": "440022",
+      "imgName": "https://devstclienteastus.file.core.windows.net/fourdpath/440022.svs",
+      "originOrgan": "Breast",
+      "sampleOrgan": "Breast",
+      "sampleType": "Biopsy",
+      "samplePart": "Lesion",
+      "subpartCd": "U",
+      "blockCd": "U",
+      "diseaseSetting": "Metastatic",
+      "imageHash": "pnpf8v7XZgJ7p/JVby9Aug==",
+      "archive": false,
+      "slideStain": "HE",
+      "slideLinkID": null
+    }
+  ]
+}

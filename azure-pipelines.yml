@@ -1,0 +1,53 @@
+trigger:
+- main
+
+pr:
+  branches:
+    include:
+      - main
+
+pool:
+  vmImage: 'windows-latest'
+
+variables:
+  buildConfiguration: 'Release'
+  solution: '**/E2ETests.csproj'
+  publishWebProjects: false   # <-- Add this variable
+
+stages:
+- stage: Build
+  displayName: Build And Publish Stage
+  
+  jobs:
+  - job: Build
+    displayName: Build And Publish E2ETests
+    
+    steps:
+    - task: DotNetCoreCLI@2
+      displayName: Restore
+      inputs:
+        command: 'restore'
+        feedsToUse: 'select'
+        vstsFeed: '38d868c5-49ce-4b58-807d-8eb8130a1776'
+
+    - task: DotNetCoreCLI@2
+      displayName: 'Build E2ETests'
+      inputs:
+        command: 'build'
+        projects: '$(solution)'
+        arguments: '--configuration $(buildConfiguration)'
+
+    - task: DotNetCoreCLI@2
+      displayName: 'Publish E2ETests'
+      inputs:
+        command: 'publish'
+        publishWebProjects: false   # <-- Add this line to the publish task
+        projects: '$(solution)'
+        arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+
+    - task: PublishBuildArtifacts@1
+      displayName: 'Publish E2ETests Artifact'
+      inputs:
+        pathToPublish: '$(Build.ArtifactStagingDirectory)'
+        artifactName: 'E2ETests'
+
